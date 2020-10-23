@@ -67,13 +67,11 @@ namespace LirikChatDownloader
             // Rn we wait until all streams are done but such is life.
             do
             {
-                Log.Debug($"Starting batch {(offset % 8).ToString()}.");
                 bound = offset + streams;
                 if (bound > videos.Count)
                     bound = videos.Count;
                 
-                if (offset % streams == 0) 
-                    Log.Information($"Dumped {offset.ToString()} Chats.");
+                Log.Information($"Dumped {offset.ToString()} Chats.");
                 
                 for (int i = offset; i < bound; ++i)
                 {
