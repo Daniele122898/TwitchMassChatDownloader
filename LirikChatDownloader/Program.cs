@@ -61,7 +61,7 @@ namespace LirikChatDownloader
             #if DEBUG
             int streams = 20;
             #else
-            int streams = 4;
+            int streams = 100;
             #endif
             int bound = 0;
             List<Task> tasks = new List<Task>(streams);
@@ -109,7 +109,7 @@ namespace LirikChatDownloader
                     Log.Error("Exception in Task list: ", e);
                 }
                 tasks.Clear();
-                offset += bound;
+                offset += (bound - offset);
             } while (bound < videos.Count);
             Log.Information("Finished parallel chat dump :)");
         }
