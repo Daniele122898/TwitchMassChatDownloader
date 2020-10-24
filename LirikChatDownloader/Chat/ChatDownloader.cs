@@ -37,11 +37,15 @@ namespace LirikChatDownloader.Chat
 
             var comments = await this.DownloadChat(video).ConfigureAwait(false);
             if (!comments)
+            {
+                Log.Error($"Failed to fetch comments\n{comments.Err().Message.Get()}");
                 return new Result<bool, Error>(comments.Err());
+            }
             
             var chat = new Dtos.Chat(video, comments.Some());
             var json = JsonConvert.SerializeObject(chat);
             await File.WriteAllTextAsync(filePath, json);
+            Log.Information($"Dumped {filePath}");
             return true;
         }
         

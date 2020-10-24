@@ -57,7 +57,7 @@ namespace LirikChatDownloader
             #if DEBUG
             int streams = 20;
             #else
-            int streams = 200;
+            int streams = 100;
             #endif
             int bound = 0;
             List<Task> tasks = new List<Task>(streams);
@@ -94,7 +94,15 @@ namespace LirikChatDownloader
                     offset += bound;    
                     continue;
                 }
-                await Task.WhenAll(tasks);
+
+                try
+                {
+                    await Task.WhenAll(tasks);
+                }
+                catch (Exception e)
+                {
+                    Log.Error("Exception in Task list: ", e);
+                }
                 tasks.Clear();
                 offset += bound;
             } while (bound < videos.Count);
