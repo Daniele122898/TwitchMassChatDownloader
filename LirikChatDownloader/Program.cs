@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using LirikChatDownloader.Chat;
 using LirikChatDownloader.Streamer;
 using Serilog;
+using Serilog.Events;
 
 namespace LirikChatDownloader
 {
@@ -18,11 +20,13 @@ namespace LirikChatDownloader
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
+                .WriteTo.File("log_debug.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
             #else
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.Console()
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
             #endif
             
@@ -57,10 +61,15 @@ namespace LirikChatDownloader
             #if DEBUG
             int streams = 20;
             #else
-            int streams = 100;
+            int streams = 4;
             #endif
             int bound = 0;
             List<Task> tasks = new List<Task>(streams);
+            
+            // Let's cache the entire directory in case that helps the inconsistency
+            var fileDict = Directory.GetFiles(chatDir)
+                .Select(x => Path.GetFileName(x))
+                .ToDictionary(x => x);
             
             // This script had to be done very quick thus if you'd want to do this properly you'd use a window approach like TCP.
             // Where once one download is done another would start and you'd always saturate the streams amount. 
@@ -76,8 +85,10 @@ namespace LirikChatDownloader
                 for (int i = offset; i < bound; ++i)
                 {
                     var video = videos[i];
-                    string path = Path.Combine(chatDir, $"{video.CreatedAt:dd_MM_yyyy}-{video.Id}.json");
-                    if (File.Exists(path))
+                    string fileName = $"{video.CreatedAt:dd_MM_yyyy}-{video.Id}.json";
+                    string path = Path.Combine(chatDir, fileName);
+                    //if (File.Exists(path))
+                    if (fileDict.ContainsKey(fileName))
                     {
                         Log.Debug($"{video.Id} already exists. Skipping.");
                         ++bound;
@@ -87,12 +98,6 @@ namespace LirikChatDownloader
                     }
                     var t = chatDownloader.TryDownloadAndSaveChat(video, path);
                     tasks.Add(t);
-                }
-
-                if (tasks.Count == 0)
-                {
-                    offset += bound;    
-                    continue;
                 }
 
                 try
