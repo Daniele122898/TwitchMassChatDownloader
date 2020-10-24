@@ -88,7 +88,7 @@ namespace LirikChatDownloader.Chat
                 if (counter % 10 == 0)
                 {
                     Log.Debug(
-                        $"{video.Id}: {((coms.Comments[0].ContentOffsetSeconds / (float) video.LengthInSeconds) * 100f).ToString(CultureInfo.InvariantCulture)}% of dump complete.");
+                        $"{video.Id}: {((coms.Comments[0].ContentOffsetSeconds / video.LengthInSeconds) * 100f).ToString(CultureInfo.InvariantCulture)}% of dump complete.");
                     counter = 0;
                 }
 

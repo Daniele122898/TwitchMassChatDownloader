@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using LirikChatDownloader.Chat;
 using LirikChatDownloader.Streamer;
 using Serilog;
-using Serilog.Events;
 
 namespace LirikChatDownloader
 {
