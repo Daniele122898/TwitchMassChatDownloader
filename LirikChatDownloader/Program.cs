@@ -85,7 +85,7 @@ namespace LirikChatDownloader
                 for (int i = offset; i < bound; ++i)
                 {
                     var video = videos[i];
-                    string fileName = $"{video.CreatedAt:dd_MM_yyyy}-{video.Id}.json";
+                    string fileName = $"{video.CreatedAt:yyyy_MM_dd}-{video.Id}.json";
                     string path = Path.Combine(chatDir, fileName);
                     //if (File.Exists(path))
                     if (fileDict.ContainsKey(fileName))
