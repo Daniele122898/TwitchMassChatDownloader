@@ -1,0 +1,17 @@
+POST /gql HTTP/1.1
+Host: gql.twitch.tv
+Connection: keep-alive
+Content-Length: 880
+Authorization: OAuth xxx
+Accept-Language: en-US
+Client-Id: xxx
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36
+X-Device-Id: xxx
+Content-Type: text/plain;charset=UTF-8
+Accept: */*
+Origin: https://www.twitch.tv
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.twitch.tv/
+Accept-Encoding: gzip, deflate, br

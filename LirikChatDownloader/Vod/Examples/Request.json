@@ -1,0 +1,14 @@
+[
+    {
+        "operationName": "VideoPlayer_ChapterSelectButtonVideo",
+        "variables": {
+            "videoID": "778540089"
+        },
+        "extensions": {
+            "persistedQuery": {
+                "version": 1,
+                "sha256Hash": "b63c615e4fec1fbc3e6dd2d471c818886c4cf528c0cf99c136ba3981024f5e98"
+            }
+        }
+    }
+]

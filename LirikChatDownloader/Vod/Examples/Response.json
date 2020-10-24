@@ -1,0 +1,360 @@
+[
+    {
+        "data": {
+            "video": {
+                "id": "778540089",
+                "moments": {
+                    "edges": [
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "00aab9c1e2c697d25a0487531a25d872",
+                                "durationMilliseconds": 14000,
+                                "positionMilliseconds": 0,
+                                "type": "GAME_CHANGE",
+                                "description": "World of Warcraft",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "18122",
+                                        "displayName": "World of Warcraft",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/World%20of%20Warcraft-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "4fd07ff261ca2fdbb2e8e1083d37f374",
+                                "durationMilliseconds": 1610000,
+                                "positionMilliseconds": 14000,
+                                "type": "GAME_CHANGE",
+                                "description": "Just Chatting",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "509658",
+                                        "displayName": "Just Chatting",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/Just%20Chatting-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "5ec5003c25a49104178cade2deff7916",
+                                "durationMilliseconds": 1654000,
+                                "positionMilliseconds": 1624000,
+                                "type": "GAME_CHANGE",
+                                "description": "VRChat",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "499003",
+                                        "displayName": "VRChat",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/VRChat-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "656ea2c2eb41f20bf2ad46341a9a0dd4",
+                                "durationMilliseconds": 2257000,
+                                "positionMilliseconds": 3278000,
+                                "type": "GAME_CHANGE",
+                                "description": "Among Us",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "510218",
+                                        "displayName": "Among Us",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/Among%20Us-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "81acc9d38ba36677bd8ac07c46ffb4f8",
+                                "durationMilliseconds": 5692000,
+                                "positionMilliseconds": 5535000,
+                                "type": "GAME_CHANGE",
+                                "description": "VRChat",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "499003",
+                                        "displayName": "VRChat",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/VRChat-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "ee2a93c090b81ede8805291057e3d00d",
+                                "durationMilliseconds": 3939000,
+                                "positionMilliseconds": 11227000,
+                                "type": "GAME_CHANGE",
+                                "description": "Among Us",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "510218",
+                                        "displayName": "Among Us",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/Among%20Us-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "3fecce96f38b7aebebc47dbac6a4f177",
+                                "durationMilliseconds": 8511000,
+                                "positionMilliseconds": 15166000,
+                                "type": "GAME_CHANGE",
+                                "description": "Just Chatting",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "509658",
+                                        "displayName": "Just Chatting",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/Just%20Chatting-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "3dc3108d5a3e041dd2a3b8e61dbd88e8",
+                                "durationMilliseconds": 8154000,
+                                "positionMilliseconds": 23677000,
+                                "type": "GAME_CHANGE",
+                                "description": "World of Warcraft",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "18122",
+                                        "displayName": "World of Warcraft",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/World%20of%20Warcraft-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "899859631eaae88021467d5e0662db24",
+                                "durationMilliseconds": 1240000,
+                                "positionMilliseconds": 31831000,
+                                "type": "GAME_CHANGE",
+                                "description": "Jackbox Party Packs",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "493174",
+                                        "displayName": "Jackbox Party Packs",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/Jackbox%20Party%20Packs-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        },
+                        {
+                            "node": {
+                                "moments": {
+                                    "edges": [],
+                                    "__typename": "VideoMomentConnection"
+                                },
+                                "id": "de14c487f01f910edd41d16e3befe232",
+                                "durationMilliseconds": 11847000,
+                                "positionMilliseconds": 33071000,
+                                "type": "GAME_CHANGE",
+                                "description": "world of warcraft",
+                                "subDescription": "",
+                                "thumbnailURL": "",
+                                "details": {
+                                    "game": {
+                                        "id": "18122",
+                                        "displayName": "World of Warcraft",
+                                        "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/World%20of%20Warcraft-40x53.jpg",
+                                        "__typename": "Game"
+                                    },
+                                    "__typename": "GameChangeMomentDetails",
+                                    "__typename": "GameChangeMomentDetails"
+                                },
+                                "video": {
+                                    "id": "778540089",
+                                    "lengthSeconds": 44918,
+                                    "__typename": "Video"
+                                },
+                                "__typename": "VideoMoment",
+                                "__typename": "VideoMoment"
+                            },
+                            "__typename": "VideoMomentEdge",
+                            "__typename": "VideoMomentEdge"
+                        }
+                    ],
+                    "__typename": "VideoMomentConnection"
+                },
+                "__typename": "Video"
+            }
+        },
+        "extensions": {
+            "durationMilliseconds": 24,
+            "operationName": "VideoPlayer_ChapterSelectButtonVideo",
+            "requestID": "01ENE8MYSJ4T2KNPCQTWNYVHVA"
+        }
+    }
+]

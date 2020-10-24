@@ -29,6 +29,11 @@ namespace LirikChatDownloader
                 .CreateLogger();
             #endif
             
+            
+        }
+
+        static async Task GetChatDump()
+        {
             string chatDir = Path.Combine(Directory.GetCurrentDirectory(), "ChatLogs");
             if (!Directory.Exists(chatDir))
                 Directory.CreateDirectory(chatDir);
