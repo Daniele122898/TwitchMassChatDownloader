@@ -39,7 +39,7 @@ namespace LirikChatDownloader.Vod.Dtos
         public long PositionMilliseconds { get; set; }
 
         [JsonProperty("description")] 
-        public string GameTitle { get; set; }
+        public string Description { get; set; }
 
         [JsonProperty("details")] 
         public Details Details { get; set; }
@@ -72,10 +72,10 @@ namespace LirikChatDownloader.Vod.Dtos
         public string Id { get; set; }
 
         [JsonProperty("displayName")] 
-        public string Title { get; set; }
+        public string DisplayName { get; set; }
 
         [JsonProperty("boxArtURL")] 
-        public Uri BoxArtUrl { get; set; }
+        public string BoxArtUrl { get; set; }
     }
 
     public class NodeVideo

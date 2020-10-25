@@ -1,0 +1,122 @@
+﻿[
+  {
+    "data": {
+      "video": {
+        "id": "781539804",
+        "moments": {
+          "edges": [
+            {
+              "node": {
+                "moments": {
+                  "edges": [],
+                  "__typename": "VideoMomentConnection"
+                },
+                "id": "2acf0a9ed9f656dfba69fa06e9bb90a2",
+                "durationMilliseconds": 1333000,
+                "positionMilliseconds": 0,
+                "type": "GAME_CHANGE",
+                "description": "Just Chatting",
+                "subDescription": "",
+                "thumbnailURL": "",
+                "details": {
+                  "game": {
+                    "id": "509658",
+                    "displayName": "Just Chatting",
+                    "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/Just%20Chatting-40x53.jpg",
+                    "__typename": "Game"
+                  },
+                  "__typename": "GameChangeMomentDetails",
+                  "__typename": "GameChangeMomentDetails"
+                },
+                "video": {
+                  "id": "781539804",
+                  "lengthSeconds": 8166,
+                  "__typename": "Video"
+                },
+                "__typename": "VideoMoment",
+                "__typename": "VideoMoment"
+              },
+              "__typename": "VideoMomentEdge",
+              "__typename": "VideoMomentEdge"
+            },
+            {
+              "node": {
+                "moments": {
+                  "edges": [],
+                  "__typename": "VideoMomentConnection"
+                },
+                "id": "5d7bd33714502346a3d921006d59bdbd",
+                "durationMilliseconds": 3389000,
+                "positionMilliseconds": 1333000,
+                "type": "GAME_CHANGE",
+                "description": "Pumpkin Jack",
+                "subDescription": "",
+                "thumbnailURL": "",
+                "details": {
+                  "game": {
+                    "id": "516632",
+                    "displayName": "Pumpkin Jack",
+                    "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/Pumpkin%20Jack-40x53.jpg",
+                    "__typename": "Game"
+                  },
+                  "__typename": "GameChangeMomentDetails",
+                  "__typename": "GameChangeMomentDetails"
+                },
+                "video": {
+                  "id": "781539804",
+                  "lengthSeconds": 8166,
+                  "__typename": "Video"
+                },
+                "__typename": "VideoMoment",
+                "__typename": "VideoMoment"
+              },
+              "__typename": "VideoMomentEdge",
+              "__typename": "VideoMomentEdge"
+            },
+            {
+              "node": {
+                "moments": {
+                  "edges": [],
+                  "__typename": "VideoMomentConnection"
+                },
+                "id": "5beebadae08c4c7a9ac5a6e139455937",
+                "durationMilliseconds": 0,
+                "positionMilliseconds": 4722000,
+                "type": "GAME_CHANGE",
+                "description": "DISC ROOM",
+                "subDescription": "",
+                "thumbnailURL": "",
+                "details": {
+                  "game": {
+                    "id": "508084",
+                    "displayName": "DISC ROOM",
+                    "boxArtURL": "https://static-cdn.jtvnw.net/ttv-boxart/DISC%20ROOM-40x53.jpg",
+                    "__typename": "Game"
+                  },
+                  "__typename": "GameChangeMomentDetails",
+                  "__typename": "GameChangeMomentDetails"
+                },
+                "video": {
+                  "id": "781539804",
+                  "lengthSeconds": 8166,
+                  "__typename": "Video"
+                },
+                "__typename": "VideoMoment",
+                "__typename": "VideoMoment"
+              },
+              "__typename": "VideoMomentEdge",
+              "__typename": "VideoMomentEdge"
+            }
+          ],
+          "__typename": "VideoMomentConnection"
+        },
+        "__typename": "Video"
+      }
+    },
+    "extensions": {
+      "durationMilliseconds": 22,
+      "operationName": "VideoPlayer_ChapterSelectButtonVideo",
+      "requestID": "01ENGFXX3Y4KBKYZ5SYFPNVXWG"
+    }
+  }
+]

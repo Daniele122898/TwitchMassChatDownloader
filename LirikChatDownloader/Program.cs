@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using LirikChatDownloader.Chat;
 using LirikChatDownloader.Streamer;
+using LirikChatDownloader.Streamer.Dtos;
+using LirikChatDownloader.Vod;
 using Serilog;
 
 namespace LirikChatDownloader
@@ -28,8 +30,47 @@ namespace LirikChatDownloader
                 .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
             #endif
+
+            await GetVodMetadataDump();
+        }
+
+        static async Task GetVodMetadataDump()
+        {
+            string vodDir = Path.Combine(Directory.GetCurrentDirectory(), "VodLogs");
+            if (!Directory.Exists(vodDir))
+                Directory.CreateDirectory(vodDir);
             
+            var streamDownloader = new StreamerDownloader();
+            var vodInfoDownloader = new VodInfoDownloader();
             
+            Log.Information("Get Lirik channel ID");
+            var channelId = await streamDownloader.GetChannelIdByName("Lirik");
+            if (!channelId)
+            {
+                Log.Fatal("Failed to fetch Channel ID");
+                Environment.Exit(-1);
+            }
+            
+            Log.Information("Starting Video Information Download");
+            
+            var videos = await streamDownloader.GetChannelVods(channelId.Some(), 100);
+            
+            if (videos.Count == 0)
+            {
+                Log.Fatal("Failed to fetch videos");
+                Environment.Exit(-1);
+            }
+            Log.Information($"Fetched information about {videos.Count.ToString()} videos");
+
+            var vod = new Video()
+            {
+                Id = "v777321233",
+                Title = "test",
+                BroadcastId = 1231,
+                CreatedAt = DateTime.Now,
+                LengthInSeconds = 12312321
+            };
+            await vodInfoDownloader.TryDownloadAndSaveVodMetadata(vod, Path.Combine(vodDir, $"{vod.CreatedAt:yyyy_MM_dd}-{vod.Id}.json"));
         }
 
         static async Task GetChatDump()
