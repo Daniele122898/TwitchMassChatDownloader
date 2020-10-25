@@ -47,13 +47,13 @@ namespace LirikChatDownloader.Vod
             VodMetadata data = new VodMetadata()
             {
                 Video = video,
-                Games = resp.Some()[0]?.Data.Video.Moments.Edges.Select(x => new GameInfo()
+                Games = resp.Some()[0]?.Data?.Video?.Moments?.Edges?.Where(x => x?.Node != null).Select(x => new GameInfo()
                 {
                     DurationMilliseconds = x.Node.DurationMilliseconds,
                     PositionMilliseconds = x.Node.PositionMilliseconds,
-                    Id = x.Node.Details.Game.Id,
-                    Title = x.Node.Details.Game.DisplayName,
-                    BoxArtUrl = x.Node.Details.Game.BoxArtUrl
+                    Id = x.Node.Details?.Game?.Id,
+                    Title = x.Node.Details?.Game?.DisplayName ?? x.Node.Description,
+                    BoxArtUrl = x.Node.Details?.Game?.BoxArtUrl
                 }).ToList()
             };
             

@@ -53,7 +53,7 @@ namespace LirikChatDownloader
             
             Log.Information("Starting Video Information Download");
             
-            var videos = await streamDownloader.GetChannelVods(channelId.Some(), 100);
+            var videos = await streamDownloader.GetChannelVods(channelId.Some());
             
             if (videos.Count == 0)
             {
@@ -62,15 +62,20 @@ namespace LirikChatDownloader
             }
             Log.Information($"Fetched information about {videos.Count.ToString()} videos");
 
-            var vod = new Video()
+            foreach (var video in videos)
             {
-                Id = "v777321233",
-                Title = "test",
-                BroadcastId = 1231,
-                CreatedAt = DateTime.Now,
-                LengthInSeconds = 12312321
-            };
-            await vodInfoDownloader.TryDownloadAndSaveVodMetadata(vod, Path.Combine(vodDir, $"{vod.CreatedAt:yyyy_MM_dd}-{vod.Id}.json"));
+                string fileName = $"{video.CreatedAt:yyyy_MM_dd}-{video.Id}.json";
+                string path = Path.Combine(vodDir, fileName);
+                if (File.Exists(path))
+                {
+                    Log.Debug($"{video.Id} already exists. Skipping.");
+                    continue; // In case the service gets shut down we dont re-download everything everytime.
+                }
+                await vodInfoDownloader.TryDownloadAndSaveVodMetadata(video, path);
+            }
+            
+            Log.Information("Finished Metadata Dump");
+
         }
 
         static async Task GetChatDump()
