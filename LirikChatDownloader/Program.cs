@@ -30,18 +30,8 @@ namespace LirikChatDownloader
                 .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
             #endif
-
-            await GetVodMetadataDump();
-        }
-
-        static async Task GetVodMetadataDump()
-        {
-            string vodDir = Path.Combine(Directory.GetCurrentDirectory(), "VodLogs");
-            if (!Directory.Exists(vodDir))
-                Directory.CreateDirectory(vodDir);
             
             var streamDownloader = new StreamerDownloader();
-            var vodInfoDownloader = new VodInfoDownloader();
             
             Log.Information("Get Lirik channel ID");
             var channelId = await streamDownloader.GetChannelIdByName("Lirik");
@@ -61,6 +51,21 @@ namespace LirikChatDownloader
                 Environment.Exit(-1);
             }
             Log.Information($"Fetched information about {videos.Count.ToString()} videos");
+
+
+            var metaTask = GetVodMetadataDump(videos);
+            var chatTask = GetChatDump(videos);
+
+            Task.WaitAll(metaTask, chatTask);
+        }
+
+        static async Task GetVodMetadataDump(List<Video> videos)
+        {
+            string vodDir = Path.Combine(Directory.GetCurrentDirectory(), "VodLogs");
+            if (!Directory.Exists(vodDir))
+                Directory.CreateDirectory(vodDir);
+            
+            var vodInfoDownloader = new VodInfoDownloader();
 
             foreach (var video in videos)
             {
@@ -78,33 +83,13 @@ namespace LirikChatDownloader
 
         }
 
-        static async Task GetChatDump()
+        static async Task GetChatDump(List<Video> videos)
         {
             string chatDir = Path.Combine(Directory.GetCurrentDirectory(), "ChatLogs");
             if (!Directory.Exists(chatDir))
                 Directory.CreateDirectory(chatDir);
             
-            var streamDownloader = new StreamerDownloader();
             var chatDownloader = new ChatDownloader();
-            
-            Log.Information("Get Lirik channel ID");
-            var channelId = await streamDownloader.GetChannelIdByName("Lirik");
-            if (!channelId)
-            {
-                Log.Fatal("Failed to fetch Channel ID");
-                Environment.Exit(-1);
-            }
-            
-            Log.Information("Starting Video Information Download");
-            
-            var videos = await streamDownloader.GetChannelVods(channelId.Some());
-            
-            if (videos.Count == 0)
-            {
-                Log.Fatal("Failed to fetch videos");
-                Environment.Exit(-1);
-            }
-            Log.Information($"Fetched information about {videos.Count.ToString()} videos");
             
             Log.Information($"Start parallel chat dump into {chatDir}.");
             int offset = 0;
