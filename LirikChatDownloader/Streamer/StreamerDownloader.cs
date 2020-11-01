@@ -22,8 +22,22 @@ namespace LirikChatDownloader.Streamer
             http.DefaultRequestHeaders.Clear();
             http.DefaultRequestHeaders.Add("Accept", "application/vnd.twitchtv.v5+json; charset=UTF-8");
             http.DefaultRequestHeaders.Add("Client-Id", "***REMOVED***");
+            http.DefaultRequestHeaders.Add("Authorization", "Bearer ***REMOVED***");
             
             _http = new CoreHttpClient(http);
+        }
+
+        public async Task<bool> IsChannelLive(string name)
+        {
+            var res = await _http.GetAndMapResponse<StreamStatusDto>(
+                $"https://api.twitch.tv/helix/streams?user_login={name}");
+            if (!res)
+            {
+                Log.Error($"Failed to get Channel Stream Status {name}\n{(res.Err().Message.Get())}\n{res.Err().Trace.SomeOrDefault("")}");
+                return false;
+            }
+
+            return res.Some().Data?.Count > 0;
         }
 
         public async Task<List<Video>> GetChannelVods(string channelId, int amount = int.MaxValue)

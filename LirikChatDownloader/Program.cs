@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using LirikChatDownloader.Chat;
 using LirikChatDownloader.Streamer;
@@ -14,6 +15,9 @@ namespace LirikChatDownloader
     class Program
     {
         // ReSharper disable once UnusedParameter.Local
+
+        private static Timer _timer;
+        
         static async Task Main(string[] args)
         {
             
@@ -31,7 +35,21 @@ namespace LirikChatDownloader
                 .CreateLogger();
             #endif
             
+            _timer = new Timer(PeriodicCheck, null, TimeSpan.FromSeconds(1), TimeSpan.FromMinutes(20));
+
+            // Wait so we never quit.
+            await Task.Delay(-1);
+        }
+
+        private static async void PeriodicCheck(object state)
+        {
             var streamDownloader = new StreamerDownloader();
+
+            if (await streamDownloader.IsChannelLive("Lirik"))
+            {
+                Log.Information("Lirik is currently live. Not downloading anything!");
+                return;
+            }
             
             Log.Information("Get Lirik channel ID");
             var channelId = await streamDownloader.GetChannelIdByName("Lirik");
@@ -55,7 +73,7 @@ namespace LirikChatDownloader
 
             var metaTask = GetVodMetadataDump(videos);
             var chatTask = GetChatDump(videos);
-
+            
             Task.WaitAll(metaTask, chatTask);
         }
 
