@@ -35,7 +35,7 @@ namespace LirikChatDownloader
                 .CreateLogger();
             #endif
             
-            _timer = new Timer(PeriodicCheck, null, TimeSpan.FromSeconds(1), TimeSpan.FromMinutes(20));
+            _timer = new Timer(PeriodicCheck, null, TimeSpan.FromSeconds(1), TimeSpan.FromMinutes(15));
 
             // Wait so we never quit.
             await Task.Delay(-1);
@@ -51,7 +51,7 @@ namespace LirikChatDownloader
                 return;
             }
             
-            Log.Information("Get Lirik channel ID");
+            Log.Debug("Get Lirik channel ID");
             var channelId = await streamDownloader.GetChannelIdByName("Lirik");
             if (!channelId)
             {
@@ -59,7 +59,7 @@ namespace LirikChatDownloader
                 Environment.Exit(-1);
             }
             
-            Log.Information("Starting Video Information Download");
+            Log.Debug("Starting Video Information Download");
             
             var videos = await streamDownloader.GetChannelVods(channelId.Some());
             
@@ -68,7 +68,7 @@ namespace LirikChatDownloader
                 Log.Fatal("Failed to fetch videos");
                 Environment.Exit(-1);
             }
-            Log.Information($"Fetched information about {videos.Count.ToString()} videos");
+            Log.Debug($"Fetched information about {videos.Count.ToString()} videos");
 
 
             var metaTask = GetVodMetadataDump(videos);
@@ -84,7 +84,7 @@ namespace LirikChatDownloader
                 Directory.CreateDirectory(vodDir);
             
             var vodInfoDownloader = new VodInfoDownloader();
-
+            bool dumped = false;
             foreach (var video in videos)
             {
                 string fileName = $"{video.CreatedAt:yyyy_MM_dd}-{video.Id}.json";
@@ -94,11 +94,12 @@ namespace LirikChatDownloader
                     Log.Debug($"{video.Id} already exists. Skipping.");
                     continue; // In case the service gets shut down we dont re-download everything everytime.
                 }
+
+                dumped = true;
                 await vodInfoDownloader.TryDownloadAndSaveVodMetadata(video, path);
             }
-            
-            Log.Information("Finished Metadata Dump");
-
+            if (dumped)
+                Log.Information("Finished Metadata Dump");
         }
 
         static async Task GetChatDump(List<Video> videos)
@@ -109,7 +110,7 @@ namespace LirikChatDownloader
             
             var chatDownloader = new ChatDownloader();
             
-            Log.Information($"Start parallel chat dump into {chatDir}.");
+            Log.Debug($"Start parallel chat dump into {chatDir}.");
             int offset = 0;
             #if DEBUG
             int streams = 20;
@@ -123,6 +124,8 @@ namespace LirikChatDownloader
             var fileDict = Directory.GetFiles(chatDir)
                 .Select(x => Path.GetFileName(x))
                 .ToDictionary(x => x);
+
+            bool dumped = false;
             
             // This script had to be done very quick thus if you'd want to do this properly you'd use a window approach like TCP.
             // Where once one download is done another would start and you'd always saturate the streams amount. 
@@ -133,7 +136,7 @@ namespace LirikChatDownloader
                 if (bound > videos.Count)
                     bound = videos.Count;
                 
-                Log.Information($"Dumped {offset.ToString()} Chats.");
+                Log.Debug($"Dumped {offset.ToString()} Chats.");
                 
                 for (int i = offset; i < bound; ++i)
                 {
@@ -149,6 +152,8 @@ namespace LirikChatDownloader
                             bound = videos.Count;
                         continue; // In case the service gets shut down we dont re-download everything everytime.
                     }
+
+                    dumped = true;
                     var t = chatDownloader.TryDownloadAndSaveChat(video, path);
                     tasks.Add(t);
                 }
@@ -164,7 +169,8 @@ namespace LirikChatDownloader
                 tasks.Clear();
                 offset += (bound - offset);
             } while (bound < videos.Count);
-            Log.Information("Finished parallel chat dump :)");
+            if (dumped)
+                Log.Information("Finished parallel chat dump :)");
         }
     }
 }
