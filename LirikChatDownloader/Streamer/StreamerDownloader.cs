@@ -21,8 +21,8 @@ namespace LirikChatDownloader.Streamer
             var http = new HttpClient();
             http.DefaultRequestHeaders.Clear();
             http.DefaultRequestHeaders.Add("Accept", "application/vnd.twitchtv.v5+json; charset=UTF-8");
-            http.DefaultRequestHeaders.Add("Client-Id", "***REMOVED***");
-            http.DefaultRequestHeaders.Add("Authorization", "Bearer ***REMOVED***");
+            http.DefaultRequestHeaders.Add("Client-Id", "");
+            http.DefaultRequestHeaders.Add("Authorization", "Bearer ");
             
             _http = new CoreHttpClient(http);
         }
